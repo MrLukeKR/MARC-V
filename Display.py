@@ -28,22 +28,26 @@ W, R, G, B, Y, C, M, X,
 W, R, G, B, Y, C, M, X
 ]
 
+EXCLAIM = [
+	X, X, X, W, W, X, X, X,
+	X, X, X, W, W, X, X, X,
+	X, X, X, W, W, X, X, X,
+	X, X, X, W, W, X, X, X,
+	X, X, X, W, W, X, X, X,
+	X, X, X, X, X, X, X, X,
+	X, X, X, W, W, X, X, X,
+	X, X, X, W, W, X, X, X
+	]
+
+
 
 def display_message(message):
 	sense.show_message(message)
 
-def display_warning():
-	EXCLAIM = [
-		X, X, X, W, W, X, X, X,
-		X, X, X, W, W, X, X, X,
-		X, X, X, W, W, X, X, X,
-		X, X, X, W, W, X, X, X,
-		X, X, X, W, W, X, X, X,
-		X, X, X, X, X, X, X, X,
-		X, X, X, W, W, X, X, X,
-		X, X, X, W, W, X, X, X
-		]
+def display_error():
+	pass
 
+def display_warning():
 	WARNING = [
 		X, Y, X, Y, X, Y, X, Y,
 		Y, X, Y, X, Y, X, Y, X,
@@ -55,7 +59,7 @@ def display_warning():
 		Y, X, Y, X, Y, X, Y, X
 		]
 
-	for pos in range(1000020):
+	for pos in range(10):
 		sign = np.roll(WARNING, pos * 8 * 3)
 		sign = np.add(sign, EXCLAIM)
 		sign = np.clip(sign, a_min=0, a_max=255)
@@ -69,3 +73,6 @@ def display_sign(sign):
 
 def set_low_light(enabled=True):
 	sense.low_light = enabled
+
+def clear():
+	sense.clear()
