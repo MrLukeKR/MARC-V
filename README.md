@@ -1,5 +1,11 @@
-# MARC-V
-Mobile Artificially Intelligent Robot with Computer Vision
+<p align="center">
+  <img src="https://github.com/MrLukeKR/MARC-V/blob/main/images/MARC-V_Circle.png" height="auto" width="200" style="border-radius:50%">
+</p>
+<h1 align="center">MARC-V</h1>
+<h3 align="center">Mobile Artificially Intelligent Robot with Computer Vision</h3>
+<p align="center">Assembled and Coded by <a href="https://github.com/MrLukeKR">MrLukeKR</a></p>
+
+<hr>
 
 # Hardware
 |Unit                                                                                                                       |Cost  |Functionality                             |
