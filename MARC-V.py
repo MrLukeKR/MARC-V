@@ -37,68 +37,18 @@ def main():
 	#m2f = GPIO.PWM(M2_F, 200)
 	#m2b = GPIO.PWM(M2_B, 200)
 
-	cam.reset()
-	stream, rawCapture = cam.get_stream()
-
-	for frame in stream:
-		image = frame.array
-		cv2.imshow("MARC-V Main Camera", image)
-		size = (8,8)
-
-		key = cv2.waitKey(1) & 0xFF
-		rawCapture.truncate(0)
-	
-		if key == ord("q"):
-			break
-		elif key == ord("w"):
-			print("Moving UP")
-			cam.move(cam.Direction["UP"])
-		elif key == ord("W"):
-			print("Setting Position to UP")
-			cam.set_orientation(cam.Orientation["UP"])
-		elif key == ord("s"):
-			print("Moving DOWN")
-			cam.move(cam.Direction["DOWN"])
-		elif key == ord("S"):
-			print("Setting Position to DOWN")
-			cam.set_orientation(cam.Orientation["DOWN"])
-		elif key == ord("a"):
-			print("Moving LEFT")
-			cam.move(cam.Direction["LEFT"])
-		elif key == ord("A"):
-			print("Setting Position to LEFT")
-			cam.set_orientation(cam.Orientation["LEFT"])
-		elif key == ord("d"):
-			print("Moving RIGHT")
-			cam.move(cam.Direction["RIGHT"])
-		elif key == ord("D"):
-			print("Setting Position to RIGHT")
-			cam.set_orientation(cam.Orientation["RIGHT"])
-		elif key == ord(" "):
-			print("Resetting Camera")
-			cam.reset()
-		else:
-			img = Image.fromarray(image)
-			img = img.resize(size, Image.ANTIALIAS)
-
-			img = np.asarray(img)
-	
-			img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-			img = np.reshape(img, (64, 3))
-			disp.display_sign(img)
-		
-
-
-	disp.set_low_light()
+    cam.reset()
+    disp.set_low_light()
+    cam.run_vision_loop()
 	#m1f.ChangeDutyCycle(100)
 	#m2f.ChangeDutyCycle(100)
 
 	#m1f.stop()
 	#m2f.stop()
 
-	disp.display_warning()
-	disp.clear()
-	GPIO.cleanup()
+    disp.display_warning()
+    disp.clear()
+    GPIO.cleanup()
 
 
 
